@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+  #box{
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(3,100px);
+    gap: 20px;
+    border: 1px solid red;
+} 
+
+#box>div{
+  
+    border: 1px solid black;
+  text-align: left;
+} 
+#div{
+    background-color: red;
+}
+
+    </style>
+</head>
+<body>
+      <label>Select Month</label>
+      <br/>
+      <select  name="month" id="months"  >
+          <option value="">---</option>
+          <option value="January">January</option>
+          <option value="February">February</option>
+          <option value="March">March</option>
+          <option value="April">April</option>
+          <option value="May">May</option>
+          <option value="June">June</option>
+          <option value="July">July</option>
+          <option value="August">August</option>
+          <option value="September">September</option>
+          <option value="October">October</option> 
+          <option value="November">November</option>
+          <option value="December">December</option>
+          
+      </select>
+      <br/>
+      <br/>
+
+      <label>Income</label>
+      <br/>
+      <input type="number" id="income" placeholder="Type Your Income"/>
+      <br/>
+      <br/>
+
+      <label>Expenses</label>
+      <br/>
+      <input type="number" id="expenses" placeholder="Your Expenses"/>
+
+      <br/>
+      <br/>
+      <button id="submit" onclick="showdata()">Submit</button>
+      <br/>
+      <br/>
+
+      <div id="box">
+          <!-- <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div> -->
+      </div>
+
+      <br/>
+      <br/>
+      
+
+
+
+</body>
+
+
+</html>
+
+
+<script>
+  
+    function showdata(){
+        let store=[]
+        let div=document.createElement("div")
+let div1=document.createElement("p")
+let div2=document.createElement("p")
+let div3=document.createElement("p")
+    let month=document.getElementById("months").value
+    div1.append(month)
+    
+    store.push(month)
+    let income=document.getElementById("income").value
+    div2.append(income)
+    store.push(income)
+    let spend=document.getElementById("expenses").value
+    let expenses=income-spend
+    div3.append(expenses)
+    store.push(expenses)
+
+    localStorage.setItem("data",JSON.stringify(store))
+
+    let box=document.getElementById("box")
+// box.append(div)
+
+let get= JSON.parse(localStorage.getItem("data"))
+
+for(i=0;i<get.length;i++){
+
+    
+div.append(div1,div2,div3)
+box.append(div)
+}
+  
+    }
+
+
+
+   
+
+
+
+
+
+    
+          </script>

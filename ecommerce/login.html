@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<hi>, initial-scale=1.0">
+    <title>Log In</title>
+    <style>
+        form{
+            text-align: center;
+            text-shadow: 3px;
+            font-size:x-large;
+        }
+    </style>
+</head>
+<body>
+    <a href="Ecommerce_Navbar.html">Go back</a>
+  
+ 
+    <form>
+        <h1>Login page</h1>
+        <!-- <lable>Username</lable> -->
+        <br/>
+        <input type="text" placeholder="Phone No" id="username"/>
+        
+        <!-- <label>password</label> -->
+        <br/>
+      
+        <input type="password" placeholder="Password" id="password"/>
+        <br/>
+        <br/>
+        <input type="submit" value="Log In"/>
+    </form>
+</body>
+<script>
+    document.querySelector("form").addEventListener("submit",Login)
+ let getdata=JSON.parse(localStorage.getItem("main"))
+ console.log(getdata)
+    function Login(){
+        event.preventDefault()
+        let username=document.querySelector("#username").value
+        let password=document.querySelector("#password").value
+
+        for(i=0;i<getdata.length;i++){
+        //   console.log(getdata[i])
+        // console.log(getdata[i].username)
+            if(getdata[i].username===username && getdata[i].password===password)
+            {
+               
+                alert("LogIn Successful!!")
+             
+                window.location.href="Mens.html"
+                break;
+            }
+        
+        }   
+                
+       
+        
+    }
+</script>
+</html>      
+    
+
+     
+       
+      
+
+          
+        

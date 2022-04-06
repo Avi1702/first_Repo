@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mens</title>
+    <style>
+body{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(4,250px);
+    gap: 20px;
+    /* border: 1px solid black; */
+
+}
+h1{
+    text-align: center;
+}
+
+.box{
+    /* border: 2px solid red; */
+    
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+}
+img{
+    width: 100px;
+    height: 100px;
+    margin-top: 20px;
+    /* box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset; */
+}
+button:hover{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+    </style>
+</head>
+<body>
+    <!-- <a href="Ecommerce_Navbar.html">Go Back</a> -->
+    <!-- <h1>Mens Wear</h1> -->
+   <!-- <div id="container">
+
+   </div>  -->
+</body>
+</html>
+
+<script>
+   
+let product=[
+    {
+    title:"T-shirt",
+    image:"https://modone.com/eng_pl_Mens-plain-t-shirt-S1037-yellow-13756_4.jpg",
+    price:"$99"
+    },
+    
+{
+    title:"T-shirt",
+    image:"https://modone.com/eng_pl_Mens-plain-t-shirt-S1037-yellow-13756_4.jpg",
+    price:"$99"
+},
+{
+    title:"T-shirt",
+    image:"https://modone.com/eng_pl_Mens-plain-t-shirt-S1037-yellow-13756_4.jpg",
+    price:"$99"
+},
+{
+    title:"T-shirt",
+    image:"https://modone.com/eng_pl_Mens-plain-t-shirt-S1037-yellow-13756_4.jpg",
+    price:"$99"
+},
+{
+    title:"T-shirt",
+    image:"https://modone.com/eng_pl_Mens-plain-t-shirt-S1037-yellow-13756_4.jpg",
+    price:"$99"
+}
+]
+
+product.forEach(e =>{
+    
+let box=document.createElement("div")
+box.setAttribute("class","box")
+
+let image=document.createElement("img")
+image.setAttribute("src",e.image)
+
+let title=document.createElement("p")
+title.innerText=e.title;
+
+let price=document.createElement("p")
+price.innerText=e.price;
+
+var btn=document.createElement("button")
+btn.innerText="ADD TO CART";
+// btn.addEventListener("click",AddToCart)
+
+box.append(image,title,price,btn)
+
+document.querySelector("body").append(box)
+});
+
+</script>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp</title>
+    <style>
+        form{
+            text-align: center;
+            font-size: x-large;
+            
+        }
+    </style>
+</head>
+<body>
+    <a href="Ecommerce_Navbar.html">Go back</a>
+    <form>
+      
+        <h1>SignUp</h1>
+        <!-- <label>Username </label> -->
+        <br/>
+        <input type="text" id="username" placeholder="Username" />
+       
+        <!-- <label>Mobile No</label> -->
+        <br/>
+        <input type="text" id="Email" placeholder="Mobile No"/>
+        <br/>
+       
+        <!-- <label>password </label> -->
+       
+        <input type="password" id="password" placeholder="Password"/>
+        <br/>
+        <br/>
+        <input type="submit" value="Register"/>
+        
+
+    </form>
+</body>
+
+
+</html>
+
+<script>
+    let main
+    let get
+    if(localStorage.getItem("main")===null)
+        {
+        localStorage.setItem("main","[]")
+        get=JSON.parse(localStorage.getItem("main"))
+        }
+        else{
+ get=JSON.parse(localStorage.getItem("main"))
+        }
+
+    
+    document.querySelector("form").addEventListener("submit",signup)
+ 
+      function signup(){
+      event.preventDefault();
+ 
+       let obj={ 
+    
+        username:document.getElementById("username").value,
+         
+         email:document.getElementById("Email").value,
+          
+         password:document.getElementById("password").value
+       
+       }
+
+      get.push(obj)
+    //   console.log(get)
+    //   localStorage.clear();
+
+      localStorage.setItem("main",JSON.stringify(get))
+      alert("singup successful!!")
+
+      window.location.href="Login.html"
+
+    }
+    
+
+ </script>

@@ -21,7 +21,7 @@
         <h1>Login page</h1>
         <!-- <lable>Username</lable> -->
         <br/>
-        <input type="text" placeholder="Phone No" id="username"/>
+        <input type="text" placeholder="Mobile No" id="MobileNo"/>
         
         <!-- <label>password</label> -->
         <br/>
@@ -35,25 +35,33 @@
 <script>
     document.querySelector("form").addEventListener("submit",Login)
  let getdata=JSON.parse(localStorage.getItem("main"))
- console.log(getdata)
+
+
     function Login(){
         event.preventDefault()
-        let username=document.querySelector("#username").value
+        let MobileNo=document.querySelector("#MobileNo").value
         let password=document.querySelector("#password").value
 
         for(i=0;i<getdata.length;i++){
         //   console.log(getdata[i])
         // console.log(getdata[i].username)
-            if(getdata[i].username===username && getdata[i].password===password)
+            if(getdata[i].MobileNo===MobileNo && getdata[i].password===password)
             {
                
                 alert("LogIn Successful!!")
              
                 window.location.href="Mens.html"
-                break;
+                return
             }
+           
         
         }   
+
+        if(i==getdata.length)
+        {
+                alert("incorrect Details!!")
+            
+            }
                 
        
         

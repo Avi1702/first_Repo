@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluation_again</title>
+    <style>
+        #display{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows: 200px;
+            gap: 20px;
+            /* justify-content: space-around; */
+            /* border: 1px solid black; */
+        }
+        #display>div{
+            text-align: center;
+            /* border: 1px solid red; */
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+      
+    </style>
+    <style>
+    
+    </style>
+</head>
+<body>
+    <label>Select Month</label>
+    <br/>
+    <select  name="month" id="months"  >
+        <option value="">---</option>
+        <option value="January">January</option>
+        <option value="February">February</option>
+        <option value="March">March</option>
+        <option value="April">April</option>
+        <option value="May">May</option>
+        <option value="June">June</option>
+        <option value="July">July</option>
+        <option value="August">August</option>
+        <option value="September">September</option>
+        <option value="October">October</option> 
+        <option value="November">November</option>
+        <option value="December">December</option>
+        
+    </select>
+<br/>
+<br/>
+    <form>
+        <input type="text" placeholder="type your income" id="income"/>
+        <br/>
+        <br/>
+        <input type="text" placeholder="type your expenses" id="expenses"/>
+        <br/>
+         <br/>
+        <input type="submit" value="Submit"/>
+    </form>
+
+    <div id="display">
+
+    </div>
+</body>
+</html>
+
+<script>
+// document.getElementById("display")=""
+document.querySelector("form").addEventListener("submit",store)
+
+function store(){
+    event.preventDefault()
+  let obj={
+      month:document.getElementById("months").value,
+      income:document.querySelector("#income").value,
+      expenses:document.querySelector("#expenses").value
+  }
+  console.log(obj)
+let StoreData
+if(localStorage.getItem("data")===null){
+    StoreData=[]
+}
+else{
+StoreData= JSON.parse(localStorage.getItem("data"))
+}
+StoreData.push(obj)
+  localStorage.setItem("data",JSON.stringify(StoreData))
+
+  display()
+}
+
+function display(){
+    
+    event.preventDefault()
+    let getdata=JSON.parse(localStorage.getItem("data"))
+document.getElementById("display").innerHTML=""
+    getdata.forEach(element => {
+
+        let box=document.createElement("div")
+
+        let month=document.createElement("p")
+        month.innerText="Month :"+" "+element.month
+        let income=document.createElement("p")
+        income.innerText="Income :"+" "+element.income
+        let expenses=document.createElement("p")
+        expenses.innerText="Expenses :"+" "+element.expenses
+        let savings=document.createElement("p")
+        savings.innerText="Savings :"+" "+(element.income-element.expenses)
+
+        box.append(month,income,expenses,savings)
+
+        document.getElementById("display").append(box)
+
+        
+    });
+}
+</script>

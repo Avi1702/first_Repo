@@ -47,8 +47,16 @@ button:hover{
     background-color: red;
 }
 #paybutton{
-    background-color: orange;
+    background-color: rgb(17, 147, 56);
     height: 10%;
+    width: 50%;
+}
+#promo{
+    width: 49%;
+}
+#promobtn{
+    background-color: orange;
+    /* border-radius: 10px; */
     width: 50%;
 }
     </style>
@@ -156,15 +164,35 @@ function remove(ele,indx){
 
     table2.append(row1,row2)
 
+    let promo=document.createElement("input")
+    promo.setAttribute("type","text")
+    promo.setAttribute("placeholder","Apply Promocode")
+    promo.setAttribute("id","promo")
+
+    let promobtn=document.createElement("button")
+    promobtn.innerText="APPLY PROMOCODE"
+    promobtn.setAttribute("id","promobtn")
+    promobtn.addEventListener("click",promoCODE)
+
+
     let pay=document.createElement("button")
     pay.setAttribute("id","paybutton")
     pay.innerText="Proceed To Pay"
-    document.getElementById("container2").append(table2,pay)
+    document.getElementById("container2").append(table2,promo,promobtn,pay)
 
     pay.addEventListener("click",function(){
         window.location.href="Payment.html"
     });
 
+function promoCODE(){
+    event.preventDefault()
+    if(promo.value==="MASAI30"){
+        promobtn.innerText="PROMOCODE APPLIED"
+        amount.innerText="$"+((sum*30)/100)
+    }else{
+alert("wrong promocode!!")
+    }
+}
 </script>
 
 </html>

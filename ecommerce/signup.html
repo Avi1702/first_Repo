@@ -14,7 +14,7 @@
     </style>
 </head>
 <body>
-    <a href="Ecommerce_Navbar.html">Go back</a>
+    <!-- <a href="Ecommerce_Navbar.html">Go back</a> -->
     <form>
       
         <h1>SignUp</h1>
@@ -24,7 +24,7 @@
        
         <!-- <label>Mobile No</label> -->
         <br/>
-        <input type="text" id="Email" placeholder="Email"/>
+        <input type="email" id="Email" placeholder="Email"/>
         <br/>
        
         <!-- <label>password </label> -->
@@ -42,16 +42,24 @@
 </html>
 
 <script>
-    let main
-    let get
-    if(localStorage.getItem("main")===null)
-        {
-        localStorage.setItem("main","[]")
-        get=JSON.parse(localStorage.getItem("main"))
-        }
-        else{
- get=JSON.parse(localStorage.getItem("main"))
-        }
+    let details
+    let get=JSON.parse(localStorage.getItem("main"))
+    if(get===null){
+        details=[]
+    }
+    else{
+        details=get
+    }
+//     let main
+//     let get
+//     if(localStorage.getItem("main")===null)
+//         {
+//         localStorage.setItem("main","[]")
+//         get=JSON.parse(localStorage.getItem("main"))
+//         }
+//         else{
+//  get=JSON.parse(localStorage.getItem("main"))
+//         }
 
     
     document.querySelector("form").addEventListener("submit",signup)
@@ -69,11 +77,11 @@
        
        }
 
-      get.push(obj)
+      details.push(obj)
     //   console.log(get)
     //   localStorage.clear();
 
-      localStorage.setItem("main",JSON.stringify(get))
+      localStorage.setItem("main",JSON.stringify(details))
       alert("singup successful!!")
 
       window.location.href="Login.html"

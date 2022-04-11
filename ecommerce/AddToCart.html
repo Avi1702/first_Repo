@@ -31,7 +31,7 @@
     width: 50%;
     margin-top: 100px;
 }
-table,td{
+table,td,th{
     border: 1px solid black;
     text-align: center;
     
@@ -63,10 +63,32 @@ button:hover{
 </head>
 
 <body>
+    <a href="mens.html">Home</a>
     <h2 id="head">Cart Items</h2>
     <div id="main">
    <div id="container">
+<table>
+    <thead>
+        <th>
+    Image
+        </th>
+        <th>
+            Title
+        </th>
+     
+            <th>
+                Price
+                    </th>
+                    <th>
+                        Remove
+                            </th>
 
+                        </thead>
+
+                            <tbody id="tbody">
+                                
+                            </tbody>
+</table>
    </div> 
    <div id="container2">
 
@@ -79,28 +101,28 @@ button:hover{
 // window.location.reload()
     let getData=JSON.parse(localStorage.getItem("cart"))
 
-    let table=document.createElement("table")
-    table.setAttribute("id","table1")
-    let heading=document.createElement("tr")
-    let col1=document.createElement("td")
-    col1.innerText="Image";
-    let col2=document.createElement("td")
-    col2.innerText="Title";
-    let col3=document.createElement("td")
-    col3.innerText="Price";
-    let col4=document.createElement("td")
-    col4.innerText="Remove";
+    // let table=document.createElement("table")
+    // table.setAttribute("id","table1")
+    // let heading=document.createElement("tr")
+    // let col1=document.createElement("td")
+    // col1.innerText="Image";
+    // let col2=document.createElement("td")
+    // col2.innerText="Title";
+    // let col3=document.createElement("td")
+    // col3.innerText="Price";
+    // let col4=document.createElement("td")
+    // col4.innerText="Remove";
 
-    heading.append(col1,col2,col3,col4)
-    table.append(heading)
-    document.getElementById("container").append(table)
+    // heading.append(col1,col2,col3,col4)
+    // table.append(heading)
+    // document.getElementById("container").append(table)
     
 let count=0
 let sum=0
 // cart items table
 function display(){
     getData.forEach(function(element,indx) {
-
+tbody=document.getElementById("tbody")
         let row=document.createElement("tr")
         let data1=document.createElement("td")
         let image=document.createElement("img")
@@ -113,19 +135,12 @@ function display(){
         let data4=document.createElement("td")
         let btn=document.createElement("button")
         btn.addEventListener("click",remove)
-        // console.log(element,indx)
-        // getData.splice(indx,1)
-
-        // localStorage.setItem("cart",JSON.stringify(getData))
-        // document.getElementById("container").innerHTML=""
-        // window.location.reload()
-        // display()
-    
+        
         btn.innerText="Remove"
         data4.append(btn)
 
         row.append(data1,data2,data3,data4)
-        table.append(row)
+        tbody.append(row)
         count++
         sum+=Number(element.price);
     });
@@ -135,8 +150,9 @@ function remove(ele,indx){
  getData.splice(indx,1)
 
         localStorage.setItem("cart",JSON.stringify(getData))
-        document.getElementById("container").innerHTML=""
         window.location.reload()
+        // document.getElementById("container").innerHTML=""
+      
         // display()
 }
 
@@ -189,6 +205,7 @@ function promoCODE(){
     if(promo.value==="MASAI30"){
         promobtn.innerText="PROMOCODE APPLIED"
         amount.innerText="$"+((sum*30)/100)
+        alert("PROMOCODE APPLIED!!")
     }else{
 alert("wrong promocode!!")
     }

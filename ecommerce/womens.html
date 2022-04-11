@@ -43,7 +43,7 @@ button:hover{
     margin-top: 50px;
     display: flex;
     justify-content: space-evenly;
-    background-color:orange;
+    /* background-color:orange; */
     border-radius: 7px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     
@@ -114,6 +114,22 @@ let product=[
     image:"https://i5.walmartimages.com/asr/92467c35-d5f1-48a2-bb46-62cd4340e240_1.b120e1a6508f03a0151c4e184af82d03.jpeg",
     price:"175"
 }
+,
+{
+    title:"T-shirt",
+    image:"https://i5.walmartimages.com/asr/92467c35-d5f1-48a2-bb46-62cd4340e240_1.b120e1a6508f03a0151c4e184af82d03.jpeg",
+    price:"500"
+},
+{
+    title:"T-shirt",
+    image:"https://i5.walmartimages.com/asr/92467c35-d5f1-48a2-bb46-62cd4340e240_1.b120e1a6508f03a0151c4e184af82d03.jpeg",
+    price:"150"
+},
+{
+    title:"T-shirt",
+    image:"https://i5.walmartimages.com/asr/92467c35-d5f1-48a2-bb46-62cd4340e240_1.b120e1a6508f03a0151c4e184af82d03.jpeg",
+    price:"175"
+}
 ]
 
 product.forEach(e =>{
@@ -134,6 +150,7 @@ var btn=document.createElement("button")
 btn.innerText="ADD TO CART";
 btn.addEventListener("click",function(){
     let cart
+    alert("Item Added To Cart!")
     if(localStorage.getItem("cart")===null){
 
         cart=[]
